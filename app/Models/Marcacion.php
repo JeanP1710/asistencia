@@ -10,23 +10,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Marcacion extends Model
 {
     use HasFactory, MarcacionTrait;
-    protected $fillable=['alumno_id', 'sede_id','fecha', 'hora', 'tipo'];
+    protected $fillable=['personal_id', 'sede_id','fecha', 'hora', 'tipo'];
     /**
      * Get the alumno that owns the Marcacion
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function alumno(): BelongsTo
+    public function personal(): BelongsTo
     {
-        return $this->belongsTo(Alumno::class, 'alumno_id');
+        return $this->belongsTo(Personal::class, 'personal_id');
     }
     /**
      * Get the establecimiento that owns the Marcacion
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function sede(): BelongsTo
-    {
-        return $this->belongsTo(Sede::class, 'sede_id');
-    }
+
 }

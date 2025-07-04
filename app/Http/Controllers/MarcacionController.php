@@ -45,13 +45,13 @@ class MarcacionController extends Controller
         
         $marcacionHoy = Marcacion::where('fecha', $fecha)
             ->where('personal_id', $personal->id)
-            ->latest()
+            ->orderByDesc('hora')
             ->first();
-        
-        if ($marcacionHoy && Carbon::parse($marcacionHoy->hora)->diffInMinutes($horaActual) <= 5) {
+
+        if ($marcacionHoy) {
             return response()->json([
                 'ok' => 2,
-                'mensaje' => 'No puede marcar seguido',
+                'mensaje' => 'Ya marcó hoy',
             ], 200);
         }
 
