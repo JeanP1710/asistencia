@@ -13,6 +13,10 @@ export default function useUsuario() {
         let respuesta = await axios.get('usuario/mostrar?id='+id,getConfigHeader())
         usuario.value = respuesta.data
     }
+    const obtenerUsuarioName = async(name) => {
+        let respuesta = await axios.get('usuario/mostrar-por-nombre?name='+name,getConfigHeader())
+        usuario.value = respuesta.data
+    }
     const obtenerUsuarios = async(data) => {
         let respuesta = await axios.get('usuario/listar-'+data.show_tipo + getdataParamsPagination(data),getConfigHeader())
         usuarios.value =respuesta.data
@@ -105,6 +109,6 @@ export default function useUsuario() {
     return {
         errors, usuarios, usuario, obtenerUsuario, obtenerUsuarios, 
         agregarUsuario, actualizarUsuario, eliminarUsuario, respuesta,
-        resetClaveUsuario, cambiarEstado, cambiarClave
+        resetClaveUsuario, cambiarEstado, cambiarClave, obtenerUsuarioName
     }
 }

@@ -34,25 +34,6 @@ class MenuSeeder extends Seeder
                 'grupo_id'  => GrupoMenu::where('titulo', 'Sistema')->value('id'),
                 'orden' => 6,
             ],
-            //Certificado
-            [
-                'nombre' => 'Certificado',
-                'slug' => 'certificado',
-                'icono' => 'fas fa-certificate',
-                'padre_id' => null,
-                'grupo_id'  => GrupoMenu::where('titulo', 'Certificados')->value('id'),
-                'orden' => 7,
-            ],
-            [
-                'nombre' => 'Persona',
-                'slug' => 'persona',
-                'icono' => 'fas fa-id-card',
-                'padre_id' => null,
-                'grupo_id'  => GrupoMenu::where('titulo', 'Certificados')->value('id'),
-                'orden' => 8,
-            ],
-
-
             [
                 'nombre' => 'Marcaciones',
                 'slug' => 'marcaciones',
@@ -70,24 +51,16 @@ class MenuSeeder extends Seeder
                 'orden' => 8,
             ],
             [
-                'nombre' => 'Reporte por Alumno',
-                'slug' => 'reporte-por-alumno',
+                'nombre' => 'Reporte por Personal',
+                'slug' => 'reporte-por-personal',
                 'icono' => 'fas fa-chart-bar',
                 'padre_id' => null,
                 'grupo_id'  => GrupoMenu::where('titulo', 'Asistencia')->value('id'),
                 'orden' => 8,
-            ],
-            [
-                'nombre' => 'Examen',
-                'slug' => 'examen',
-                'icono' => 'fas fa-graduation-cap',
-                'padre_id' => null,
-                'grupo_id'  => GrupoMenu::where('titulo', 'Evaluacion')->value('id'),
-                'orden' => 8,
             ],    
             [
-                'nombre' => 'Alumnos',
-                'slug' => 'alumnos',
+                'nombre' => 'Personals',
+                'slug' => 'personals',
                 'icono' => 'fas fa-graduation-cap',
                 'padre_id' => null,
                 'grupo_id'  => GrupoMenu::where('titulo', 'Asistencia')->value('id'),

@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-    
+
         <nav-bar :menus="menus"></nav-bar>
         <div class="content">
             <side-bar :usuario="usuario" :roles="roles"></side-bar>

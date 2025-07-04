@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoTrabajador;
 use Illuminate\Http\Request;
 
-class ProgramaController extends Controller
+class TipoTrabajadorController extends Controller
 {
     public function store(Request $request)
     {

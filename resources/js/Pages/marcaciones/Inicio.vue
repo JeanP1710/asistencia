@@ -4,7 +4,7 @@
     import useHelper from '@/Helpers';  
     import useMarcacion from '@/Composables/marcacion.js';
     import useSede from '@/Composables/sede.js';
-    import usePrograma from '@/Composables/programa.js';    
+    import useTipoTrabajador from '@/Composables/TipoTrabajador.js';    
     import { jwtDecode } from 'jwt-decode'
     const { openModal, Toast, Swal, formatoFecha } = useHelper();
     const {
@@ -18,16 +18,15 @@
         sede
     } = useSede();
     const {
-        listaProgramas,
-        programas
-    } = usePrograma();    
+        listaTipoTrabajadores,
+        tipoTrabajadores
+    } = useTipoTrabajador();    
     const dato = ref({
         page:'',
         buscar:'',
         paginacion: 10,
     });
     const form=ref({
-        sede_id:'',
         programa_id:'',
         ciclo:'',
         fecha:formatoFecha(null,'YYYY-MM-DD'),
@@ -89,15 +88,10 @@
         }
         return pagesArray
     }
-    const copiarColumna = async () => {
-        try {
-            const datosColumna = marcaciones.value.data.map(marcacion => marcacion.alumno.apellido_paterno+ ' ' + marcacion.alumno.apellido_materno + ' ' + marcacion.alumno.nombres).join('\n');
-            await navigator.clipboard.writeText(datosColumna);
-            alert('APENOM copiados al portapapeles!');
-        } catch (err) {
-            console.error('Error al copiar al portapapeles: ', err);
-        }
-    };
+    onMounted(() => {
+        listaTipoTrabajadores()
+
+    })
 </script>
 <template>
     <div class="app-content">
@@ -174,22 +168,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
-                        <label for="sede_id" class="form-label">Sede </label>
-                        <select class="form-select mb-3" v-model="form.sede_id" aria-label="">
-                            <option v-for="sede in sedes" :key="sede.id" :value="sede.id"
-                                :title="sede.nombre">
-                                {{ sede.nombre }}
-                            </option>
-                        </select>
-                        <small class="text-danger" v-for="error in form.errors.sede_id" :key="error">{{ error }}<br></small>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="programa_id" class="form-label">Programa de Estudios </label>
+                        <label for="programa_id" class="form-label">Tipo Trabajador </label>
                         <select class="form-select mb-3" v-model="form.programa_id" aria-label="">
                             <option selected="" value="" disabled>Todos</option>
-                            <option v-for="programa in programas" :key="programa.id" :value="programa.id"
-                                :title="programa.nombre">
-                                {{ programa.nombre }}
+                            <option v-for="tipo in tipoTrabajadores" :key="tipo.id" :value="tipo.id"
+                                :title="tipo.nombre">
+                                {{ tipo.nombre }}
                             </option>
                         </select>
                         <small class="text-danger" v-for="error in form.errors.programa_id" :key="error">{{ error }}<br></small>
@@ -215,9 +199,6 @@
                     </div>
                     <div class="col-md-2"><br>
                         <button class="btn btn-primary" @click="buscar">Buscar</button>
-                    </div>
-                    <div class="col-md-2"><br>
-                        <button @click="copiarColumna" class="btn btn-primary mb-2">Copiar Apellidos Y Nombres</button>
                     </div>
                 </div>
                 <div class="row">

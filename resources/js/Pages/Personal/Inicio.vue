@@ -3,10 +3,7 @@
   import { defineTitle } from '@/Helpers';
   import useHelper from '@/Helpers';  
   import usePersonal from '@/Composables/Personal.js';
-  import useDeuda from '@/Composables/Deuda.js';  
-  import PersonalForm from './Form.vue'
-  import DeudaForm from './DeudaForm.vue'  
-  import usePrograma from '@/Composables/programa.js';    
+  import useTipoTrabajador from '@/Composables/TipoTrabajador.js';    
   const { openModal, Toast, Swal, formatoFecha } = useHelper();
   const {
         personals, errors, personal, respuesta,
@@ -14,9 +11,9 @@
         cambiarEstado, cambiarEstadoDeuda
     } = usePersonal();
     const {
-        listaProgramas,
-        programas
-    } = usePrograma();
+        listaTipoTrabajadores,
+        tipoTrabajadores
+    } = useTipoTrabajador();
     let mes = parseInt(formatoFecha(null,'MM'));
     let anho = parseInt(formatoFecha(null,'YYYY'));
 
@@ -51,14 +48,6 @@
         estadoCrud:'',
         errors:[]
     });
-    const deudaForm=ref({
-        id:'',
-        alumno_id : '',
-        nombreMes : '',
-        mes : mes,
-        anio : anho,
-        errors:[]
-    })
     const limpiar = ()=> {
         form.value.id='',
         form.value.numero_dni='',
@@ -105,8 +94,8 @@
     const nuevo = () => {
         limpiar()
         form.value.estadoCrud = 'nuevo'
-        openModal('#modalalumno')
-        document.getElementById("modalalumnoLabel").innerHTML = 'Nuevo alumno';
+        openModal('#modalPersonal')
+        document.getElementById("modalPersonalLabel").innerHTML = 'Nuevo Personal';
         //titulo.textContent = 'Editar Datos Personales';
     }
     const listarPersonal = async(page=1) => {
@@ -434,5 +423,4 @@
       </div>
     </div>
     <AlumnoForm :form="form" @onListar="listarAlumnos" :currentPage="alumnos.current_page"></AlumnoForm>
-    <DeudaForm :form="deudaForm" :deudas="deudas" :anios="anios" @onListar="obtenerDeudas"></DeudaForm>
 </template>

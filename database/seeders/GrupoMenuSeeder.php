@@ -15,9 +15,7 @@ class GrupoMenuSeeder extends Seeder
     {
         $grupos = [
             ['titulo' => 'Sistema'],
-            ['titulo' => 'Certificados'],
             ['titulo' => 'Asistencia'],
-            ['titulo' => 'Evaluacion'],
         ];
 
         foreach($grupos as $grupo){

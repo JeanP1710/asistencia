@@ -4,15 +4,15 @@
     import useMarcacion from '@/Composables/marcacion.js';
     import useSede from '@/Composables/sede.js';
     import JsonExcel from 'vue-json-excel3';
-    import usePrograma from '@/Composables/programa.js';    
+    import useTipoTrabajador from '@/Composables/TipoTrabajador.js';    
     const {
         registros, errors, grupo, respuesta,
         obtenerMarcaciones, obtenerMarcacion, obtenerMarcacionesMensual, eliminarGrupo
     } = useMarcacion();
     const {
-        listaProgramas,
-        programas
-    } = usePrograma();    
+        listaTipoTrabajadores,
+        tipoTrabajadores
+    } = useTipoTrabajador();    
     const { diaMaxMes, formatoFecha, meses } = useHelper();
     const {
         listaSedes,
@@ -97,7 +97,7 @@
     onMounted(() => {
         listaSedes()
         listarAnios()
-        listaProgramas()
+        listaTipoTrabajadores()
     })
 </script>
 <template>
@@ -115,7 +115,7 @@
                         <label for="programa_id" class="form-label">Programa de Estudios</label>
                         <select class="form-select" v-model="dato.programa_id" aria-label="" :class="{ 'is-invalid': dato.errors.programa_id }">
                             <option selected="" value="" disabled>Todos</option>
-                            <option v-for="programa in programas" :key="programa.id" :value="programa.id"
+                            <option v-for="programa in tipoTrabajadores" :key="programa.id" :value="programa.id"
                                 :title="programa.nombre">
                                 {{ programa.nombre }}
                             </option>

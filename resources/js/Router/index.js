@@ -16,14 +16,11 @@ import Persona from '@/Pages/Persona/Inicio.vue'
 import Asistencia from '@/Pages/Asistencia/Inicio.vue'
 import Marcaciones from '@/Pages/marcaciones/Inicio.vue'
 import ReporteAsistencia from '@/Pages/Reporte/Asistencia.vue'
-import ReporteMarcacionesDocente from '@/Pages/Reporte/AsistenciaDocente.vue'
 import ReportePorPersonal from '@/Pages/Reporte/PorPersonal.vue'
 import ReportePersonals from '@/Pages/Reporte/Personals.vue'
 import Personal from '@/Pages/Personal/Inicio.vue'
 import Docente from '@/Pages/Docentes/Inicio.vue'
 import Verificaciones from '@/Pages/VerificarDatos/Inicio.vue'
-import FichaSocio from '@/Pages/FichaSocio/Inicio.vue'
-import LoginPersonal from '@/Pages/FichaSocio/Login.vue'
 const routes = [
     {
         path: '/', name:'Inicio', component: Asistencia ,
@@ -45,10 +42,6 @@ const routes = [
         path: '/reporte-marcaciones',name: 'ReporteMarcaciones', component: ReporteAsistencia,
         meta: {layout: LayoutIntranet}
     },
-    {
-        path: '/reporte-marcaciones-docente',name: 'ReporteMarcacionesDocente', component: ReporteMarcacionesDocente,
-        meta: {layout: LayoutIntranet}
-    },    
     {
         path: '/reporte-por-personal',name: 'ReportePersonal', component: ReportePorPersonal,
         meta: {layout: LayoutIntranet}
@@ -84,14 +77,6 @@ const routes = [
     {
         path: '/docente',name: 'Docente', component: Docente,
         meta: {layout: LayoutIntranet}
-    },   
-    {
-        path: '/ficha-socio',name: 'FichaSocio', component: FichaSocio,
-        meta: {layout: LayoutInicio}
-    },   
-    {
-        path: '/personal-login',name: 'LoginPersonal', component: LoginPersonal,
-        meta: {layout: LayoutInicio}
     },       
 ]
 

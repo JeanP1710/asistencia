@@ -4,14 +4,14 @@
     import useHelper from '@/Helpers';  
     import usePersonal from '@/Composables/Personal.js';
     import JsonExcel from 'vue-json-excel3';
-    import usePrograma from '@/Composables/programa.js';    
+    import useTipoTrabajador from '@/Composables/TipoTrabajador.js';    
     const {
         personals, personalsPorFiltros, errors
     } = usePersonal();
     const {
-        listaProgramas,
-        programas
-    } = usePrograma();
+        listaTipoTrabajadores,
+        tipoTrabajadores
+    } = useTipoTrabajador();
     const jsonFields = ref({
         "DNI" : "numero_dni",
         "Apellido Paterno": "apellido_paterno",
@@ -41,7 +41,7 @@
         }
     }
     onMounted(() => {
-        listaProgramas()
+        listaTipoTrabajadores()
     })
 </script>
 <template>
@@ -59,7 +59,7 @@
                         <label for="programa_id" class="form-label">Programa de Estudios</label>
                         <select class="form-select" v-model="dato.programa_id" aria-label="" :class="{ 'is-invalid': dato.errors.programa_id }">
                             <option selected="" value="" disabled>Todos</option>
-                            <option v-for="programa in programas" :key="programa.id" :value="programa.id"
+                            <option v-for="programa in tipoTrabajadores" :key="programa.id" :value="programa.id"
                                 :title="programa.nombre">
                                 {{ programa.nombre }}
                             </option>

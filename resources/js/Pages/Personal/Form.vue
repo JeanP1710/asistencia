@@ -1,7 +1,7 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
 import usePersonal from '@/Composables/Personal.js';
-import usePrograma from '@/Composables/programa.js';
+import useTipoTrabajador from '@/Composables/TipoTrabajador.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast, slugify } = useHelper();
 const props = defineProps({
@@ -13,8 +13,8 @@ const {
     errors, respuesta, agregarPersonal, actualizarPersonal
 } = usePersonal();
 const {
-    listaProgramas, programas
-} = usePrograma();
+    listaTipoTrabajadores,tipoTrabajadores
+} = useTipoTrabajador();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {

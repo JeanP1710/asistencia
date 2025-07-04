@@ -26,9 +26,10 @@ export const useUsuarioStore = defineStore("usuario", {
             try {
                 const response = await axios.get('usuario-session-data/', { params: { id: user_id } });
                 this.usuario = response.data.usuario;
-                await obtenerAlumnoPorCodigo(this.usuario.name);
-                this.alumno_user=alumno.value
+                //await obtenerPersonalPorCodigo(this.usuario.name);
+                //this.alumno_user=alumno.value
                 this.menus = response.data.menus ?? []
+                // console.log(this.menus)
             } catch (error) {
                 if (error.response) {
                     const status = error.response.status;

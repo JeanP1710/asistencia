@@ -3,10 +3,10 @@ use App\Http\Controllers\GrupoMenuController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\MarcacionController;
-use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\TipoTrabajadorController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'grupo-menu', 'middleware' => 'auth'], function () {
@@ -31,13 +31,13 @@ Route::group(['prefix' => 'menu', 'middleware' => 'auth'], function () {
 
 
 //programa
-Route::group(['prefix' => 'programa', 'middleware' => 'auth'], function () {
-    Route::get('todos', [ProgramaController::class, 'todos']);
-    Route::get('mostrar', [ProgramaController::class, 'show']);
-    Route::post('actualizar', [ProgramaController::class, 'update']);
-    Route::post('eliminar', [ProgramaController::class, 'destroy']);
-    Route::post('guardar', [ProgramaController::class, 'store']);
-    Route::get('listar', [ProgramaController::class, 'listar']);
+Route::group(['prefix' => 'tipo-trabajador', 'middleware' => 'auth'], function () {
+    Route::get('todos', [TipoTrabajadorController::class, 'todos']);
+    Route::get('mostrar', [TipoTrabajadorController::class, 'show']);
+    Route::post('actualizar', [TipoTrabajadorController::class, 'update']);
+    Route::post('eliminar', [TipoTrabajadorController::class, 'destroy']);
+    Route::post('guardar', [TipoTrabajadorController::class, 'store']);
+    Route::get('listar', [TipoTrabajadorController::class, 'listar']);
 });
 
 //CERTIFICADO
@@ -62,6 +62,7 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [UserController::class, 'destroy']);
     Route::post('guardar', [UserController::class, 'store']);
     Route::get('cambiar-estado',[UserController::class,'cambiarEstado']);
+    Route::get('mostrar-por-nombre',[UserController::class,'mostraNombre']);
     Route::post('cambiar-clave',[UserController::class,'cambiarclaveperfil']);
 });
 
