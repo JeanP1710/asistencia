@@ -1,0 +1,5 @@
+allow pasting
+
+
+localStorage.setItem('datosEncriptados', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6Im1pdG9rZW5nZW5lcmFkbzEyMyIsInNlZGVfaWQiOiIxIn0.V3Gs-b_DmfZGylzkHSLCb3rvMEOyOqyksd6Ntsdt-4M')
+sede 1 :  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6Im1pdG9rZW5nZW5lcmFkbzEyMyIsInNlZGVfaWQiOiIxIn0.V3Gs-b_DmfZGylzkHSLCb3rvMEOyOqyksd6Ntsdt-4M
